@@ -9,13 +9,14 @@ android:padding="16dp">
     android:id="@+id/loginusernameEditText"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    />
+    android:hint="User Name"    />
 
 <EditText
     android:id="@+id/loginpasswordEditText"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:inputType="textPassword" />
+    android:inputType="textPassword"
+    android:hint="Password"/>
 
 <Button
     android:id="@+id/loginButton"
