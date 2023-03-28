@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/drawerLayout"
+        android:fitsSystemWindows="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="#00FF80"
+                android:id="@+id/toolbar">
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Quản lý chi tiêu"-->
+<!--                    android:textSize="20dp"-->
+<!--                    android:gravity="center"/>-->
+            </androidx.appcompat.widget.Toolbar>
+
+<!--                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"-->
+<!--                app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="hello"/>
+
+            </LinearLayout>
+        </LinearLayout>
+        <com.google.android.material.navigation.NavigationView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/Light_Green"
+            android:layout_gravity="start"
+            android:id="@+id/NavigationView"
+            android:fitsSystemWindows="true">
+
+            <ListView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/lv"
+                android:layout_marginTop="30dp"/>
+        </com.google.android.material.navigation.NavigationView>
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+</RelativeLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto">-->
+
+<!--&lt;!&ndash;    &lt;!&ndash;Layout phía trên cùng&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;    <LinearLayout&ndash;&gt;-->
+<!--&lt;!&ndash;        android:id="@+id/layout_top"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:background="@android:color/holo_orange_light"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:orientation="horizontal"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:gravity="center_vertical">&ndash;&gt;-->
+
+<!--&lt;!&ndash;        &lt;!&ndash;        <TextView&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            android:id="@+id/tv_money"&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            android:layout_width="0dp"&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            android:layout_weight="1"&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            android:textSize="24sp"&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            android:textStyle="bold"&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            android:textColor="@android:color/white"&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            android:textAlignment="center"&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            android:padding="10dp"/>&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;        &lt;!&ndash; Khung hiển thị số tiền &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;        <Button&ndash;&gt;-->
+<!--&lt;!&ndash;                android:id="@+id/btn_menu"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_width="77dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_gravity="end"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:padding="10dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:text="Menu"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:textSize="16sp" />&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <LinearLayout&ndash;&gt;-->
+<!--&lt;!&ndash;                android:id="@+id/menu_drawer"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_height="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_gravity="start"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:background="@color/white"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:orientation="vertical"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:visibility="gone">&ndash;&gt;-->
+
+<!--&lt;!&ndash;                &lt;!&ndash; Include your menu layout here &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                <include layout="@layout/menu_layout" />&ndash;&gt;-->
+
+<!--&lt;!&ndash;        </LinearLayout>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <FrameLayout&ndash;&gt;-->
+<!--&lt;!&ndash;            android:id="@+id/amount_frame"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_width="0dp"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_weight="1"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_marginStart="16dp"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_marginEnd="16dp">&ndash;&gt;-->
+
+<!--&lt;!&ndash;            &lt;!&ndash; Textview để hiển thị số tiền &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;            <TextView&ndash;&gt;-->
+<!--&lt;!&ndash;                android:id="@+id/amount_text"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:text="10.000.000 VND"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:textSize="24sp"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:textStyle="bold"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_gravity="center"/>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        </FrameLayout>&ndash;&gt;-->
+<!--&lt;!&ndash;    </LinearLayout>&ndash;&gt;-->
+
+<!--&lt;!&ndash;    &lt;!&ndash; Layout chứa tablayout và biểu đồ &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;    <LinearLayout&ndash;&gt;-->
+<!--&lt;!&ndash;        android:id="@+id/tab_layout_container"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_below="@+id/layout_top"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:background="#00ff7f"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:orientation="vertical"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:padding="16dp">&ndash;&gt;-->
+
+<!--&lt;!&ndash;        &lt;!&ndash; Tablayout để chuyển đổi giữa chi phí và lương &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        <com.google.android.material.tabs.TabLayout&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            android:id="@+id/tab_layout"&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            android:layout_width="378dp"&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            android:background="#2e8b57"&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            app:tabIndicatorColor="@android:color/holo_blue_dark"&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            app:tabSelectedTextColor="@android:color/white"&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            app:tabTextColor="@color/white" />&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;        <LinearLayout&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_height="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:orientation="vertical">&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;            <com.google.android.material.tabs.TabLayout&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                android:id="@+id/tabLayout"&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                android:layout_width="match_parent"&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                android:layout_height="wrap_content"/>&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;            <androidx.viewpager.widget.ViewPager&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                android:id="@+id/viewPager"&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                android:layout_width="match_parent"&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                android:layout_height="257dp"&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                android:layout_weight="1" />&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;            <com.google.android.material.tabs.TabLayout&ndash;&gt;-->
+<!--&lt;!&ndash;                android:id="@+id/tab_layout"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                app:layout_constraintTop_toTopOf="parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                app:layout_constraintStart_toStartOf="parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                app:layout_constraintEnd_toEndOf="parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                app:tabIndicatorColor="@android:color/white"&ndash;&gt;-->
+<!--&lt;!&ndash;                app:tabSelectedTextColor="@android:color/white"&ndash;&gt;-->
+<!--&lt;!&ndash;                app:tabTextColor="@color/black" />&ndash;&gt;-->
+
+<!--&lt;!&ndash;            <androidx.viewpager.widget.ViewPager&ndash;&gt;-->
+<!--&lt;!&ndash;                android:id="@+id/view_pager"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_height="0dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                app:layout_constraintTop_toBottomOf="@id/tab_layout"&ndash;&gt;-->
+<!--&lt;!&ndash;                app:layout_constraintBottom_toBottomOf="parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                app:layout_constraintStart_toStartOf="parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                app:layout_constraintEnd_toEndOf="parent" />&ndash;&gt;-->
+
+<!--&lt;!&ndash;        </LinearLayout>&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;        &lt;!&ndash; Layout chứa biểu đồ tròn &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;        <FrameLayout&ndash;&gt;-->
+<!--&lt;!&ndash;            android:id="@+id/chart_frame"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_height="288dp"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_marginTop="16dp"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_weight="1"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:background="@color/white" />&ndash;&gt;-->
+
+<!--&lt;!&ndash;    </LinearLayout>&ndash;&gt;-->
+
+<!--&lt;!&ndash;    &lt;!&ndash; Nút dấu cộng để thêm số tiền &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;    <ImageButton&ndash;&gt;-->
+<!--&lt;!&ndash;        android:id="@+id/add_button"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_alignParentEnd="true"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_alignParentBottom="true"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_marginStart="16dp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_marginTop="16dp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_marginEnd="16dp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_marginBottom="19dp" />&ndash;&gt;-->
+
+<!--</RelativeLayout>-->
+
