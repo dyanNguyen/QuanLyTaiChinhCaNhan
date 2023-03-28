@@ -6,28 +6,32 @@ android:orientation="vertical"
 android:padding="16dp">
 
 <EditText
-    android:id="@+id/emailEditText"
+    android:id="@+id/loginusernameEditText"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:hint="Email" />
+    />
 
 <EditText
-    android:id="@+id/passwordEditText"
+    android:id="@+id/loginpasswordEditText"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:hint="Password"
     android:inputType="textPassword" />
 
 <Button
     android:id="@+id/loginButton"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:text="Login" />
+    android:text="Đăng nhập" />
 
-<TextView
-    android:id="@+id/registerTextView"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="Don't have an account? Register here" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Không có tài khoản?" />
+
+    <TextView
+        android:id="@+id/Signup1TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Đăng kí " />
 
 </LinearLayout>
