@@ -1,0 +1,86 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:id="@+id/system"
+        android:textSize="25sp"
+        android:layout_margin="5dp"
+        android:text="Hệ thống tiền tệ" />
+
+    <TextView
+        android:id="@+id/tien"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/system"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:gravity="center"
+        android:text=""
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/currency1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tien"
+        android:gravity="center"
+        android:text="$USD"
+        android:textSize="19sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/currency2"
+        android:gravity="center"
+        android:layout_below="@id/currency1"
+        android:textSize="19sp"
+        android:layout_margin="5dp"
+        android:text="¥JPY" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/currency3"
+        android:gravity="center"
+        android:textSize="19sp"
+        android:layout_below="@id/currency2"
+        android:layout_margin="5dp"
+        android:text="€EUR" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/currency4"
+        android:gravity="center"
+        android:textSize="19sp"
+        android:layout_below="@id/currency3"
+        android:layout_margin="5dp"
+        android:text="CNY" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/currency5"
+        android:gravity="center"
+        android:layout_below="@id/currency4"
+        android:textSize="19sp"
+        android:layout_margin="5dp"
+        android:text="RUB" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/currency5"
+        android:id="@+id/btnClick"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="15dp"
+        android:text="Chuyển đổi tiền tệ"
+        android:gravity="center" />
+</RelativeLayout>

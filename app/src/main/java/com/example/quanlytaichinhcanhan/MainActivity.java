@@ -22,6 +22,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -39,10 +40,11 @@ public class MainActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     ListView listview;
-    int tienValue;
+    int tienValue, value;
     ArrayList<ItemMenu>arrayList;
     MenuAdapter adapter;
-    String message, Tienne;
+    String message;
+    String Tienne;
     TextView LuuUserName, LuuTien;
     String valueUserName;
     public Login login = new Login();
@@ -50,12 +52,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Intent intent = getIntent();
+        message = intent.getStringExtra(Login.EXTRA_MESSAGE);
         anhXa();
         actionToolBar();
         actionMenu();
         actionadd();
-        Intent intent = getIntent();
-        message = intent.getStringExtra(Login.EXTRA_MESSAGE);
         LuuUserName = findViewById(R.id.UserNameTextView);
         LuuTien = findViewById(R.id.MoneyTextView);
         LuuUserName.setText(message);
@@ -76,47 +78,56 @@ public class MainActivity extends AppCompatActivity {
                     }
         });
     }
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        int id = item.getItemId();
-//        if (id == R.id.) {
-//            // Xử lý khi người dùng chọn Tài khoản
-//            return true;
-//        } else if (id == R.id.action_chart) {
-//            // Xử lý khi người dùng chọn Biểu đồ
-//            return true;
-//        } else if (id == R.id.action_settings) {
-//            // Xử lý khi người dùng chọn Cài đặt
-//            return true;
-//        } else if (id == R.id.action_currency) {
-//            // Xử lý khi người dùng chọn Tiền tệ
-//            return true;
-//        } else if (id == R.id.action_reminder) {
-//            // Xử lý khi người dùng chọn Nhắc nhở
-//            return true;
-//        } else if (id == R.id.action_contact) {
-//            // Xử lý khi người dùng chọn Liên hệ với chúng tôi
-//            return true;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
-    private void actionMenu() {
-        arrayList = new ArrayList<>();
-        arrayList.add(new ItemMenu("Biểu đồ thu nhập", R.drawable.ic_action_itemchart));
-        arrayList.add(new ItemMenu("Biểu đồ tiêu dùng", R.drawable.ic_action_itemchart2));
-        arrayList.add(new ItemMenu("Tài khoản", R.drawable.ic_action_itemmoney));
-        arrayList.add(new ItemMenu("Cài đặt", R.drawable.ic_action_itemsetting));
-        arrayList.add(new ItemMenu("Tiền tệ", R.drawable.ic_action_itemcurrent));
-        arrayList.add(new ItemMenu("Nhắc nhở", R.drawable.ic_action_itemnote));
-        arrayList.add(new ItemMenu("Liên hệ với chúng tôi", R.drawable.ic_action_itemcontact));
-        adapter = new MenuAdapter(this, R.layout.menuitem, arrayList);
-        listview.setAdapter(adapter);
-//        for(int i=0; i< arrayList.size();i++) {
-//            switch (i){
-//                case 1:
-//            }
-//        }
+
+private void actionMenu() {
+    arrayList = new ArrayList<>();
+    arrayList.add(new ItemMenu("Biểu đồ thu nhập", R.drawable.ic_action_itemchart));
+    arrayList.add(new ItemMenu("Biểu đồ tiêu dùng", R.drawable.ic_action_itemchart2));
+    arrayList.add(new ItemMenu("Tài khoản", R.drawable.ic_action_itemmoney));
+    arrayList.add(new ItemMenu("Cài đặt", R.drawable.ic_action_itemsetting));
+    arrayList.add(new ItemMenu("Tiền tệ", R.drawable.ic_action_itemcurrent));
+    arrayList.add(new ItemMenu("Nhắc nhở", R.drawable.ic_action_itemnote));
+    arrayList.add(new ItemMenu("Liên hệ với chúng tôi", R.drawable.ic_action_itemcontact));
+    adapter = new MenuAdapter(this, R.layout.menuitem, arrayList);
+    listview.setAdapter(adapter);
+    listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            switch(position) {
+                case 0:
+                    Intent intent1 = new Intent(MainActivity.this, ChartSalary.class);
+                    startActivity(intent1);
+                    break;
+                case 1:
+                    Intent intent2 = new Intent(MainActivity.this, ChartUsing.class);
+                    startActivity(intent2);
+                    break;
+                case 2:
+                    Intent intent3 = new Intent(MainActivity.this, Account.class);
+                    startActivity(intent3);
+                    break;
+                case 3:
+                    Intent intent4 = new Intent(MainActivity.this, Setting.class);
+                    startActivity(intent4);
+                    break;
+
+                case 4:
+                    Intent intent5 = new Intent(MainActivity.this, TienTe.class);
+                    intent5.putExtra("key2",message);
+                    startActivity(intent5);
+                    break;
+
+                case 5:
+                    Intent intent6 = new Intent(MainActivity.this, NoteActivity.class);
+                    startActivity(intent6);
+                    break;
+                case 6:
+                    Intent intent7 = new Intent(MainActivity.this, ContactActivity.class);
+                    startActivity(intent7);
+                    break;
+            }
+        }
+    });
     }
 
 
@@ -186,7 +197,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == MY_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
-            int value = data.getIntExtra("key1", 0);
+            value = data.getIntExtra("key1", 0);
             insertMoney(message,value);
             Tienne = getString(R.string.Tienne, value);
             LuuTien.setText(Tienne);

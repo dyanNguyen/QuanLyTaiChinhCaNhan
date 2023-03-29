@@ -73,7 +73,7 @@ public class MenuAdapter extends BaseAdapter {
 //            Convertview.setBackgroundColor(context.getResources().getColor(android.R.color.transparent));
 //        }
 
-        Convertview.setOnClickListener(new View.OnClickListener() {
+        /*Convertview.setOnClickListener(new View.OnClickListener() {
             boolean isPressed = false;
             @Override
             public void onClick(View v) {
@@ -119,7 +119,7 @@ public class MenuAdapter extends BaseAdapter {
                         break;
                 }
             }
-        });
+        });*/
 
         return Convertview;
     }
