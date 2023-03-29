@@ -8,6 +8,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.savedstate.SavedStateRegistry;
+
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -29,6 +31,7 @@ import com.google.android.material.navigation.NavigationView;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+    private static final int MY_REQUEST_CODE = 10;
     Toolbar toolbar;
     public SQLiteDatabase db;
     DrawerLayout drawerLayout;
@@ -50,8 +53,6 @@ public class MainActivity extends AppCompatActivity {
         actionMenu();
         Intent intent = getIntent();
         message = intent.getStringExtra(Login.EXTRA_MESSAGE);
-        int value = intent.getIntExtra("Key 1", 0);
-        insertMoney(message,value);
         LuuUserName = findViewById(R.id.UserNameTextView);
         LuuTien = findViewById(R.id.MoneyTextView);
         LuuUserName.setText(message);
@@ -124,33 +125,40 @@ public class MainActivity extends AppCompatActivity {
                         alertDialog.setCancelable(false);
                         alertDialog.setPositiveButton("Nạp tiền", (dialogInterface, i) -> {
                             Intent intent = new Intent(MainActivity.this, NaptienCucmanh.class);
-                            Bundle bundle = new Bundle();
-                            bundle.putString(NaptienCucmanh.KEY_SHOW_WHAT,null);
-                            intent.putExtras(bundle);
-                            startActivity(intent);
-                            Tienne = getString(R.string.Tienne, tienValue);
-                            LuuTien.setText(Tienne);
+                            startActivityForResult(intent,MY_REQUEST_CODE);
                         });
                         alertDialog.setNegativeButton("Không", (dialogInterface, i) -> dialogInterface.dismiss());
                         AlertDialog alertDialogBuilder = alertDialog.create();
                         alertDialogBuilder.show();
                     }
-
+                    else {
                     Tienne = getString(R.string.Tienne, tienValue);
                     LuuTien.setText(Tienne);
-
+                    }
                 }
+                else {
                 tienValue = Integer.parseInt(cursor.getString(tienIndex));
                 Tienne = getString(R.string.Tienne, tienValue);
                 LuuTien.setText(Tienne);
+                }
             }
         } catch (Exception e) {
             Toast.makeText(this, "Lỗi 00: " + e.getMessage(), Toast.LENGTH_SHORT).show();
         } finally {
             db.close();
         }
-    }
 
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == MY_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            int value = data.getIntExtra("key1", 0);
+            insertMoney(message,value);
+            Tienne = getString(R.string.Tienne, value);
+            LuuTien.setText(Tienne);
+        }
+    }
     public void insertMoney(String username, int newTienValue) {
         try {
             db = openOrCreateDatabase(Login.dtbase, MODE_PRIVATE, null);

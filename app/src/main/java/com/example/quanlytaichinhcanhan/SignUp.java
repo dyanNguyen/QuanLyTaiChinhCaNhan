@@ -67,6 +67,7 @@ public class SignUp extends Activity {
             public void onClick(View view) {
                 Intent intent = new Intent(SignUp.this, Login.class);
                 startActivity(intent);
+                finish();
             }
         });
         SignupButton.setOnClickListener(view -> {
@@ -86,6 +87,7 @@ public class SignUp extends Activity {
                     Toast.makeText(SignUp.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(SignUp.this, Login.class);
                     startActivity(intent);
+                    finish();
                 }
             }
         });

@@ -89,6 +89,7 @@ public class Login extends Activity{
             public void onClick(View view) {
                 Intent intent = new Intent(Login.this, SignUp.class);
                 startActivity(intent);
+                finish();
             }
         });
         LoginButton.setOnClickListener(new View.OnClickListener() {
@@ -103,6 +104,7 @@ public class Login extends Activity{
                     if (isUser(username, password)) {
                         Toast.makeText(Login.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
                         sendMessage();
+                        finish();
                     } else {
                         Toast.makeText(Login.this, "Tài khoản hoặc mật khẩu không đúng", Toast.LENGTH_LONG).show();
                     }

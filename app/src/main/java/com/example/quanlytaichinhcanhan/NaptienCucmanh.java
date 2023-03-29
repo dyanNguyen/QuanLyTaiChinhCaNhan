@@ -18,7 +18,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
 public class NaptienCucmanh extends Activity {
-    public static final String KEY_SHOW_WHAT = "show_what";
     int newTienValue;
     EditText nhaptien;
     Button rewrite, confirm;
@@ -26,11 +25,6 @@ public class NaptienCucmanh extends Activity {
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.nhaptien);
-        Intent intent = getIntent();
-        Bundle bundle = intent.getExtras();
-        if (bundle != null) {
-            String valueShow = bundle.getString(KEY_SHOW_WHAT, "");
-        }
         nhaptien = findViewById(R.id.money);
         rewrite = findViewById(R.id.btnnhaplai);
         confirm = findViewById(R.id.btnConfirm);
@@ -45,9 +39,10 @@ public class NaptienCucmanh extends Activity {
             public void onClick(View view) {
                 String tien = nhaptien.getText().toString();
                 newTienValue = Integer.parseInt(tien);
-                Intent intent = new Intent(NaptienCucmanh.this, MainActivity.class);
+                Intent intent = new Intent();
                 intent.putExtra("key1",newTienValue);
-                startActivity(intent);
+                setResult(Activity.RESULT_OK, intent);
+                finish();
             }
         });
     }
