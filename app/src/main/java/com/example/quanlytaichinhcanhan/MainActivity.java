@@ -12,6 +12,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
@@ -33,9 +34,10 @@ public class MainActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     ListView listview;
+    int tienValue;
     ArrayList<ItemMenu>arrayList;
     MenuAdapter adapter;
-    String message;
+    String message, Tienne;
     TextView LuuUserName, LuuTien;
     String valueUserName;
     public Login login = new Login();
@@ -48,11 +50,14 @@ public class MainActivity extends AppCompatActivity {
         actionMenu();
         Intent intent = getIntent();
         message = intent.getStringExtra(Login.EXTRA_MESSAGE);
+        int value = intent.getIntExtra("Key 1", 0);
+        insertMoney(message,value);
         LuuUserName = findViewById(R.id.UserNameTextView);
         LuuTien = findViewById(R.id.MoneyTextView);
         LuuUserName.setText(message);
         valueUserName=LuuUserName.getText().toString();
         IsProletariat();
+
     }
 
     private void actionMenu() {
@@ -109,8 +114,8 @@ public class MainActivity extends AppCompatActivity {
             if (cursor.moveToFirst()) {
                 int tienIndex = cursor.getColumnIndex("Tien");
                 if (tienIndex != -1) {
-                    int tienValue = Integer.parseInt(cursor.getString(tienIndex));
-                    String Tienne = getString(R.string.Tienne, tienValue);
+                    tienValue = Integer.parseInt(cursor.getString(tienIndex));
+                    Tienne = getString(R.string.Tienne, tienValue);
                     LuuTien.setText(Tienne);
                     if (tienValue == 0) {
                         AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
@@ -119,23 +124,25 @@ public class MainActivity extends AppCompatActivity {
                         alertDialog.setCancelable(false);
                         alertDialog.setPositiveButton("Nạp tiền", (dialogInterface, i) -> {
                             Intent intent = new Intent(MainActivity.this, NaptienCucmanh.class);
+                            Bundle bundle = new Bundle();
+                            bundle.putString(NaptienCucmanh.KEY_SHOW_WHAT,null);
+                            intent.putExtras(bundle);
                             startActivity(intent);
-                            Cursor cursor1 = db.rawQuery("SELECT Tien FROM dbUser WHERE Username=?", new String[]{valueUserName});
-                            cursor1.moveToFirst();
-                            int tienIndex1 = cursor.getColumnIndex("Tien");
-                            int tienValue1 = Integer.parseInt(cursor.getString(tienIndex1));
-                            String Tienne1 = getString(R.string.Tienne, tienValue1);
-                            LuuTien.setText(Tienne1);
+                            Tienne = getString(R.string.Tienne, tienValue);
+                            LuuTien.setText(Tienne);
                         });
                         alertDialog.setNegativeButton("Không", (dialogInterface, i) -> dialogInterface.dismiss());
                         AlertDialog alertDialogBuilder = alertDialog.create();
                         alertDialogBuilder.show();
                     }
-                    /*else {
-                        String Tienne = getString(R.string.Tienne, tienValue);
-                        LuuTien.setText(Tienne);
-                    }*/
+
+                    Tienne = getString(R.string.Tienne, tienValue);
+                    LuuTien.setText(Tienne);
+
                 }
+                tienValue = Integer.parseInt(cursor.getString(tienIndex));
+                Tienne = getString(R.string.Tienne, tienValue);
+                LuuTien.setText(Tienne);
             }
         } catch (Exception e) {
             Toast.makeText(this, "Lỗi 00: " + e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -144,4 +151,15 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void insertMoney(String username, int newTienValue) {
+        try {
+            db = openOrCreateDatabase(Login.dtbase, MODE_PRIVATE, null);
+            String sql = "UPDATE dbUser SET Tien = ? WHERE Username = ?";
+            db.execSQL(sql, new String[]{String.valueOf(newTienValue), username});
+            db.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            Toast.makeText(this, "lỗi đây", Toast.LENGTH_SHORT).show();
+        }
+    }
 }
