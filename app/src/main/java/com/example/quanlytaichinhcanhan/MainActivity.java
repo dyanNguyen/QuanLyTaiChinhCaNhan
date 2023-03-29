@@ -103,21 +103,20 @@ public class MainActivity extends AppCompatActivity {
 //    }
     private void actionMenu() {
         arrayList = new ArrayList<>();
-        for(int i=0; i< arrayList.size();i++) {
-            arrayList.add(i,new ItemMenu("Tài khoản", R.drawable.ic_action_itemmoney));
-            arrayList.add(i,new ItemMenu("Biểu đồ", R.drawable.ic_action_itemchart));
-            arrayList.add(i,new ItemMenu("Cài đặt", R.drawable.ic_action_itemsetting));
-            arrayList.add(i,new ItemMenu("Tiền tệ", R.drawable.ic_action_itemcurrent));
-            arrayList.add(i,new ItemMenu("Nhắc nhở", R.drawable.ic_action_itemnote));
-            arrayList.add(i,new ItemMenu("Liên hệ với chúng tôi", R.drawable.ic_action_itemcontact));
-        }
+        arrayList.add(new ItemMenu("Biểu đồ thu nhập", R.drawable.ic_action_itemchart));
+        arrayList.add(new ItemMenu("Biểu đồ tiêu dùng", R.drawable.ic_action_itemchart2));
+        arrayList.add(new ItemMenu("Tài khoản", R.drawable.ic_action_itemmoney));
+        arrayList.add(new ItemMenu("Cài đặt", R.drawable.ic_action_itemsetting));
+        arrayList.add(new ItemMenu("Tiền tệ", R.drawable.ic_action_itemcurrent));
+        arrayList.add(new ItemMenu("Nhắc nhở", R.drawable.ic_action_itemnote));
+        arrayList.add(new ItemMenu("Liên hệ với chúng tôi", R.drawable.ic_action_itemcontact));
         adapter = new MenuAdapter(this, R.layout.menuitem, arrayList);
         listview.setAdapter(adapter);
-        for(int i=0; i< arrayList.size();i++) {
-            switch (i){
-                case 1:
-            }
-        }
+//        for(int i=0; i< arrayList.size();i++) {
+//            switch (i){
+//                case 1:
+//            }
+//        }
     }
 
 

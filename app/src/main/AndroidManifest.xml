@@ -12,9 +12,65 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.QuanLyTaiChinhCaNhan"
         tools:targetApi="31">
-        <activity android:name=".MainActivity" android:exported="false" android:windowSoftInputMode="stateAlwaysHidden"/>
-        <activity android:name=".SignUp" android:windowSoftInputMode="stateAlwaysHidden"/>
-        <activity android:name=".NaptienCucmanh" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity
+            android:name=".NoteActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Moneys"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Setting"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Account"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ChartUsing"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ChartSalary"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ContactActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".SignUp"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".NaptienCucmanh"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".Login"
             android:exported="true">
