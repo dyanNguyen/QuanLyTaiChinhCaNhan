@@ -26,6 +26,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
@@ -51,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         anhXa();
         actionToolBar();
         actionMenu();
+        actionadd();
         Intent intent = getIntent();
         message = intent.getStringExtra(Login.EXTRA_MESSAGE);
         LuuUserName = findViewById(R.id.UserNameTextView);
@@ -58,7 +60,20 @@ public class MainActivity extends AppCompatActivity {
         LuuUserName.setText(message);
         valueUserName=LuuUserName.getText().toString();
         IsProletariat();
+    }
 
+    private void actionadd() {
+        FloatingActionButton addButton = findViewById(R.id.add_money_button);
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                        Intent intent = new Intent(MainActivity.this, NaptienCucmanh.class);
+                        startActivityForResult(intent,MY_REQUEST_CODE);
+                        //startActivity(intent);
+                        //String moneyString = moneyEditText.getText().toString();
+                        // Process the entered money value
+                    }
+        });
     }
 
     private void actionMenu() {
@@ -85,19 +100,6 @@ public class MainActivity extends AppCompatActivity {
                 drawerLayout.openDrawer(GravityCompat.START);
             }
         });
-//        if (toolbar != null) {
-//            setSupportActionBar(toolbar);
-//            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//            toolbar.setNavigationIcon(R.drawable.ic_action_menu);
-//            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    drawerLayout.openDrawer(GravityCompat.START);
-//                }
-//            });
-//        } else {
-//            Log.e("MainActivity", "Toolbar is null");
-//        }
     }
 
     public void anhXa(){

@@ -15,7 +15,6 @@
         <activity android:name=".MainActivity" android:exported="false" android:windowSoftInputMode="stateAlwaysHidden"/>
         <activity android:name=".SignUp" android:windowSoftInputMode="stateAlwaysHidden"/>
         <activity android:name=".NaptienCucmanh" android:windowSoftInputMode="stateAlwaysHidden"/>
-
         <activity
             android:name=".Login"
             android:exported="true">
