@@ -20,6 +20,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -75,20 +76,51 @@ public class MainActivity extends AppCompatActivity {
                     }
         });
     }
-
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        int id = item.getItemId();
+//        if (id == R.id.) {
+//            // Xử lý khi người dùng chọn Tài khoản
+//            return true;
+//        } else if (id == R.id.action_chart) {
+//            // Xử lý khi người dùng chọn Biểu đồ
+//            return true;
+//        } else if (id == R.id.action_settings) {
+//            // Xử lý khi người dùng chọn Cài đặt
+//            return true;
+//        } else if (id == R.id.action_currency) {
+//            // Xử lý khi người dùng chọn Tiền tệ
+//            return true;
+//        } else if (id == R.id.action_reminder) {
+//            // Xử lý khi người dùng chọn Nhắc nhở
+//            return true;
+//        } else if (id == R.id.action_contact) {
+//            // Xử lý khi người dùng chọn Liên hệ với chúng tôi
+//            return true;
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
     private void actionMenu() {
         arrayList = new ArrayList<>();
-        arrayList.add(new ItemMenu("Tài khoản",R.drawable.ic_action_itemmoney));
-        arrayList.add(new ItemMenu("Biểu đồ",R.drawable.ic_action_itemchart));
-        arrayList.add(new ItemMenu("Cài đặt",R.drawable.ic_action_itemsetting));
-        arrayList.add(new ItemMenu("Tiền tệ",R.drawable.ic_action_itemcurrent));
-        arrayList.add(new ItemMenu("Nhắc nhở",R.drawable.ic_action_itemnote));
-        arrayList.add(new ItemMenu("Liên hệ với chúng tôi",R.drawable.ic_action_itemcontact));
+        for(int i=0; i< arrayList.size();i++) {
+            arrayList.add(i,new ItemMenu("Tài khoản", R.drawable.ic_action_itemmoney));
+            arrayList.add(i,new ItemMenu("Biểu đồ", R.drawable.ic_action_itemchart));
+            arrayList.add(i,new ItemMenu("Cài đặt", R.drawable.ic_action_itemsetting));
+            arrayList.add(i,new ItemMenu("Tiền tệ", R.drawable.ic_action_itemcurrent));
+            arrayList.add(i,new ItemMenu("Nhắc nhở", R.drawable.ic_action_itemnote));
+            arrayList.add(i,new ItemMenu("Liên hệ với chúng tôi", R.drawable.ic_action_itemcontact));
+        }
         adapter = new MenuAdapter(this, R.layout.menuitem, arrayList);
         listview.setAdapter(adapter);
-
-
+        for(int i=0; i< arrayList.size();i++) {
+            switch (i){
+                case 1:
+            }
+        }
     }
+
+
 
     private void actionToolBar() {
         setSupportActionBar(toolbar);
