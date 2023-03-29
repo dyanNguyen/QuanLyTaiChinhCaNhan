@@ -13,6 +13,10 @@
         android:theme="@style/Theme.QuanLyTaiChinhCaNhan"
         tools:targetApi="31">
         <activity android:name=".TienTe"/>
+        <activity android:name=".ChartSalary"/>
+        <activity android:name=".ChartUsing"/>
+        <activity android:name=".ContactActivity"/>
+        <activity android:name=".NoteActivity"/>
         <activity android:name=".MainActivity" android:exported="false" android:windowSoftInputMode="stateAlwaysHidden"/>
         <activity android:name=".SignUp" android:windowSoftInputMode="stateAlwaysHidden"/>
         <activity android:name=".NaptienCucmanh" android:windowSoftInputMode="stateAlwaysHidden"/>
