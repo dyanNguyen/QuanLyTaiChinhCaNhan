@@ -1,16 +1,27 @@
 package com.example.quanlytaichinhcanhan;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-
+import androidx.savedstate.SavedStateRegistry;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -18,11 +29,16 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
+    public SQLiteDatabase db;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     ListView listview;
     ArrayList<ItemMenu>arrayList;
     MenuAdapter adapter;
+    String message;
+    TextView LuuUserName, LuuTien;
+    String valueUserName;
+    public Login login = new Login();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +46,13 @@ public class MainActivity extends AppCompatActivity {
         anhXa();
         actionToolBar();
         actionMenu();
+        Intent intent = getIntent();
+        message = intent.getStringExtra(Login.EXTRA_MESSAGE);
+        LuuUserName = findViewById(R.id.UserNameTextView);
+        LuuTien = findViewById(R.id.MoneyTextView);
+        LuuUserName.setText(message);
+        valueUserName=LuuUserName.getText().toString();
+        IsProletariat();
     }
 
     private void actionMenu() {
@@ -42,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
         arrayList.add(new ItemMenu("Liên hệ với chúng tôi",R.drawable.ic_action_itemcontact));
         adapter = new MenuAdapter(this, R.layout.menuitem, arrayList);
         listview.setAdapter(adapter);
+
+
     }
 
     private void actionToolBar() {
@@ -74,6 +99,49 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout =(DrawerLayout) findViewById(R.id.drawerLayout);
         navigationView = (NavigationView) findViewById(R.id.NavigationView);
         listview =(ListView) findViewById(R.id.lv);
+
+    };
+
+
+    public void IsProletariat() {
+        db = openOrCreateDatabase(Login.dtbase, MODE_PRIVATE, null);
+        try (Cursor cursor = db.rawQuery("SELECT Tien FROM dbUser WHERE Username=?", new String[]{valueUserName})) {
+            if (cursor.moveToFirst()) {
+                int tienIndex = cursor.getColumnIndex("Tien");
+                if (tienIndex != -1) {
+                    int tienValue = Integer.parseInt(cursor.getString(tienIndex));
+                    String Tienne = getString(R.string.Tienne, tienValue);
+                    LuuTien.setText(Tienne);
+                    if (tienValue == 0) {
+                        AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
+                        alertDialog.setTitle("Nạp tiền");
+                        alertDialog.setMessage("Bạn muốn nạp tiền ?");
+                        alertDialog.setCancelable(false);
+                        alertDialog.setPositiveButton("Nạp tiền", (dialogInterface, i) -> {
+                            Intent intent = new Intent(MainActivity.this, NaptienCucmanh.class);
+                            startActivity(intent);
+                            Cursor cursor1 = db.rawQuery("SELECT Tien FROM dbUser WHERE Username=?", new String[]{valueUserName});
+                            cursor1.moveToFirst();
+                            int tienIndex1 = cursor.getColumnIndex("Tien");
+                            int tienValue1 = Integer.parseInt(cursor.getString(tienIndex1));
+                            String Tienne1 = getString(R.string.Tienne, tienValue1);
+                            LuuTien.setText(Tienne1);
+                        });
+                        alertDialog.setNegativeButton("Không", (dialogInterface, i) -> dialogInterface.dismiss());
+                        AlertDialog alertDialogBuilder = alertDialog.create();
+                        alertDialogBuilder.show();
+                    }
+                    /*else {
+                        String Tienne = getString(R.string.Tienne, tienValue);
+                        LuuTien.setText(Tienne);
+                    }*/
+                }
+            }
+        } catch (Exception e) {
+            Toast.makeText(this, "Lỗi 00: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+        } finally {
+            db.close();
+        }
     }
 
 }

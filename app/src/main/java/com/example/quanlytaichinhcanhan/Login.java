@@ -1,5 +1,7 @@
 package com.example.quanlytaichinhcanhan;
 
+import static android.app.SearchManager.QUERY;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
@@ -12,15 +14,19 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.savedstate.SavedStateRegistry;
 
-public class Login extends Activity {
-    public Login() {}
-    public EditText LoginUsername, LoginPassword;
+public class Login extends Activity{
+    public EditText LoginUsername;
+    public EditText LoginPassword;
     public Button LoginButton;
     public TextView regis ;
+    public String username, password;
     public SQLiteDatabase db;
     public static final String dtbase = "QLCT.db";
+    public static final String EXTRA_MESSAGE = "com.example.quanlytaichinhcanhan.MESSAGE";
     public void initDB(){
         db= openOrCreateDatabase(dtbase,MODE_PRIVATE,null);
         String sql;
@@ -85,26 +91,32 @@ public class Login extends Activity {
                 startActivity(intent);
             }
         });
-        LoginButton.setOnClickListener(view -> {
-            String username = LoginUsername.getText().toString();
-            String password = LoginPassword.getText().toString();
+        LoginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                username = LoginUsername.getText().toString();
+                password = LoginPassword.getText().toString();
 
-            if (username.isEmpty() || password.isEmpty()) {
-                Toast.makeText(Login.this, "Vui lòng điền thông tin tài khoản, mật khẩu", Toast.LENGTH_LONG).show();
-            } else {
-                if (isUser(username, password)) {
-                    Toast.makeText(Login.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(Login.this, MainActivity.class);
-                    startActivity(intent);
+                if (username.isEmpty() || password.isEmpty()) {
+                    Toast.makeText(Login.this, "Vui lòng điền thông tin tài khoản, mật khẩu", Toast.LENGTH_LONG).show();
                 } else {
-                    Toast.makeText(Login.this, "Tài khoản hoặc mật khẩu không đúng", Toast.LENGTH_LONG).show();
+                    if (isUser(username, password)) {
+                        Toast.makeText(Login.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+                        sendMessage();
+                    } else {
+                        Toast.makeText(Login.this, "Tài khoản hoặc mật khẩu không đúng", Toast.LENGTH_LONG).show();
+                    }
                 }
             }
-        });
+            });
     }
 
-    public String getUsername() {
-        return LoginUsername.getText().toString();
+    public void sendMessage() {
+        Intent intent = new Intent(Login.this, MainActivity.class);
+        String message = LoginUsername.getText().toString();
+        intent.putExtra(EXTRA_MESSAGE,message);
+        startActivity(intent);
     }
+
 }
 

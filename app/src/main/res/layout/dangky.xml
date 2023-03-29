@@ -25,7 +25,7 @@ android:padding="16dp">
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text"
-        android:textColor="#333333"
+        android:textColor="#FFFFFF"
         android:padding="12dp"
         android:layout_marginBottom="16dp"/>
     <TextView
@@ -40,7 +40,7 @@ android:padding="16dp">
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
-        android:textColor="#333333"
+        android:textColor="#FFFFFF"
         android:padding="12dp"
         android:layout_marginBottom="16dp"/>
     <TextView
@@ -54,7 +54,7 @@ android:padding="16dp">
         android:id="@+id/repeatPasswordEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#333333"
+        android:textColor="#FFFFFF"
         android:inputType="textPassword"
         android:padding="12dp"
         android:layout_marginBottom="16dp"/>
@@ -74,6 +74,10 @@ android:padding="16dp">
         android:id="@+id/loginHereTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="18dp"
+        android:textColor="#51A0DF"
+        android:linksClickable="true"
+        android:textStyle="bold"
         android:text="Đăng nhập" />
 
 </LinearLayout>

@@ -33,6 +33,10 @@ android:padding="16dp">
         android:id="@+id/Signup1TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="18dp"
+        android:textColor="#51A0DF"
+        android:linksClickable="true"
+        android:textStyle="bold"
         android:text="Đăng kí " />
 
 </LinearLayout>

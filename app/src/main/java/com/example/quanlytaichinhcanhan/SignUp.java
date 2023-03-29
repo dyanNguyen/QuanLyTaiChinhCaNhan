@@ -2,6 +2,7 @@ package com.example.quanlytaichinhcanhan;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -19,10 +20,11 @@ public class SignUp extends Activity {
     public Button SignupButton;
     public TextView loginHereButton;
     public SQLiteDatabase db;
+    public Login login = new Login();
 
     public void insertDB(String username, String password) {
         try {
-            db = openOrCreateDatabase(Login.dtbase, MODE_PRIVATE, null);
+            db = openOrCreateDatabase(login.dtbase, MODE_PRIVATE, null);
             String sql = "INSERT INTO dbUser(Username, PassWord,Tien) values (?, ?,0)";
             db.execSQL(sql, new String[]{username, password});
             db.close();
@@ -32,7 +34,24 @@ public class SignUp extends Activity {
             Toast.makeText(this, "lỗi ở đây", Toast.LENGTH_SHORT).show();
         }
     }
-
+    public boolean isUserExits(String username){
+        try {
+            db = openOrCreateDatabase(login.dtbase,MODE_PRIVATE,null);
+            Cursor c = db.rawQuery("select * from dbUser where Username = ? ", new String[]{username});
+            c.moveToFirst();
+            db.close();
+            if (c.getCount() > 0)
+            {
+                c.close();
+                return true;
+            }
+        }
+        catch(Exception ex){
+            ex.printStackTrace();
+            Toast.makeText(this,"Bug nek 1", Toast.LENGTH_LONG).show();
+        }
+        return false;
+    }
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,8 +65,8 @@ public class SignUp extends Activity {
         loginHereButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent inte = new Intent(SignUp.this, Login.class);
-                startActivity(inte);
+                Intent intent = new Intent(SignUp.this, Login.class);
+                startActivity(intent);
             }
         });
         SignupButton.setOnClickListener(view -> {
@@ -60,10 +79,14 @@ public class SignUp extends Activity {
             else if (!password.equals(repeatpassword)) {
                 Toast.makeText(SignUp.this, "Mật khẩu và Xác nhận mật khẩu không giống nhau", Toast.LENGTH_SHORT).show();
             } else {
-                insertDB(username, password);
-                Toast.makeText(SignUp.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(SignUp.this, Login.class);
-                startActivity(intent);
+                if(isUserExits(username))
+                    Toast.makeText(SignUp.this, "Tài khoản đã tồn tại", Toast.LENGTH_SHORT).show();
+                else {
+                    insertDB(username, password);
+                    Toast.makeText(SignUp.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(SignUp.this, Login.class);
+                    startActivity(intent);
+                }
             }
         });
     }
