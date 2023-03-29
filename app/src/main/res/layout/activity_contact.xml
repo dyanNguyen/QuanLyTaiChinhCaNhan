@@ -1,9 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ContactActivity">
+    android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:id="@+id/banner"
+        android:textAlignment="textStart"
+        android:text="Liên hệ với chung tôi"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:background="#0FB647"/>
+    <!-- Facebook Link -->
+    <Button
+        android:id="@+id/facebook_link"
+        android:layout_width="135dp"
+        android:layout_height="90dp"
+        android:text="Facebook"
+        android:layout_below="@id/banner"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"/>
+
+    <!-- Discord Link -->
+    <Button
+        android:id="@+id/discord_link"
+        android:layout_width="135dp"
+        android:layout_height="90dp"
+        android:text="Discord"
+        android:layout_below="@+id/facebook_link"
+        android:layout_alignLeft="@+id/facebook_link"
+        android:layout_marginTop="16dp"/>
+
+    <Button
+        android:id="@+id/github_link"
+        android:layout_width="135dp"
+        android:layout_height="90dp"
+        android:text="Github"
+        android:layout_below="@+id/discord_link"
+        android:layout_alignLeft="@+id/facebook_link"
+        android:layout_marginTop="16dp"/>
+
+</RelativeLayout>
