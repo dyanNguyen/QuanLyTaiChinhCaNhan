@@ -7,11 +7,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class ContactActivity extends AppCompatActivity {
 
     public Button facebookLink, discordLink, githubLink;
-
+    ImageButton imgbtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,7 +21,7 @@ public class ContactActivity extends AppCompatActivity {
         facebookLink = findViewById(R.id.facebook_link);
         discordLink = findViewById(R.id.discord_link);
         githubLink = findViewById(R.id.github_link);
-
+        imgbtn = findViewById(R.id.dis);
         facebookLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -41,6 +42,15 @@ public class ContactActivity extends AppCompatActivity {
             }
         });
 
+        imgbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Mở liên kết Discord
+                Uri uri = Uri.parse("https://discord.gg/eJwcgEcvXx");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
         githubLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
