@@ -100,6 +100,7 @@ private void actionMenu() {
                     break;
                 case 1:
                     Intent intent2 = new Intent(MainActivity.this, ChartUsing.class);
+                    intent2.putExtra("key2",message);
                     startActivity(intent2);
                     break;
                 case 2:
