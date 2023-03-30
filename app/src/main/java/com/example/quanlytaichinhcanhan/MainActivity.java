@@ -199,6 +199,7 @@ private void actionMenu() {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == MY_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
             value = data.getIntExtra("key1", 0);
+            value+=tienValue;
             insertMoney(message,value);
             Tienne = getString(R.string.Tienne, value);
             LuuTien.setText(Tienne);
