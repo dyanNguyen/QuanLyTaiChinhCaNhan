@@ -99,7 +99,7 @@ private void actionMenu() {
                     startActivity(intent1);
                     break;
                 case 1:
-                    Intent intent2 = new Intent(MainActivity.this, ChartUsing.class);
+                    Intent intent2 = new Intent(MainActivity.this, usingadapter.class);
                     intent2.putExtra("key2",message);
                     startActivity(intent2);
                     break;

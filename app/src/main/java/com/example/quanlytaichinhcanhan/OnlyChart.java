@@ -11,10 +11,14 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
@@ -23,28 +27,37 @@ import java.util.List;
 
 public class OnlyChart extends AppCompatActivity {
     public SQLiteDatabase db;
-    BarChart bar;
+    PieChart pie;
     public static int i=1;
     String name;
     public int tienValue, tienIndex = -1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.chart);
+        setContentView(R.layout.activity_chart_using);
         name = getIntent().getStringExtra("key3");
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         TraTien(name);
-        bar = findViewById(R.id.barchart);
-        ArrayList<BarEntry> information = new ArrayList<>();
-        information.add(new BarEntry(1, 0));
-        BarDataSet dataset = new BarDataSet(information, "Báo cáo");
-        information.add(new BarEntry(i, tienValue));i++;
-        dataset.setColors(ColorTemplate.MATERIAL_COLORS);
-        BarData barData = new BarData(dataset);
-        bar.setFitBars(true);
-        bar.setData(barData);
-        bar.getDescription().setText("Báo cáo thu nhập");
-        bar.animateY(10000);
+        pie = findViewById(R.id.Usingchart);
+        ArrayList<PieEntry> records=new ArrayList<>();
+        records.add(new PieEntry(1, 0));
+        PieDataSet dataSet=new PieDataSet(records,"Báo cáo");
+        records.add(new PieEntry(i, tienValue));i++;
+        dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+        dataSet.setValueTextColor(Color.BLACK);
+        dataSet.setValueTextSize(22f);
+        PieData pieData=new PieData(dataSet);
+        pie.getDescription().setEnabled(true);
+        pie.setData(pieData);
+        pie.getDescription().setText("Báo cáo thu nhập");
+        pie.setCenterText("Quarterly Revenue");
+        pie.animateY(10000);
+        //ne
+        records.add(new PieEntry(32,"Quarter1"));
+        records.add(new PieEntry(14,"Quarter2"));
+        records.add(new PieEntry(34,"Quarter3"));
+        records.add(new PieEntry(38,"Quarter4"));
+
     }
     public void TraTien(String username) {
         try {

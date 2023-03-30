@@ -13,8 +13,8 @@
         android:textAlignment="center"
         android:textSize="29sp"
         tools:ignore="MissingConstraints" />
-    <com.github.mikephil.charting.charts.BarChart
-        android:id="@+id/barchart"
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/Salarychart"
         android:layout_width="match_parent"
         android:layout_margin="40dp"
         android:layout_height="match_parent"/>

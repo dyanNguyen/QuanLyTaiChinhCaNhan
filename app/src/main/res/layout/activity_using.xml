@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+    android:id="@+id/banner"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:layout_marginBottom="16dp"
+    android:background="#009688"
+    android:gravity="center"
+    android:text="Chi tiêu"
+    android:textSize="24sp"
+    android:textStyle="bold" />
+    <TextView
+    android:id="@+id/tien"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/banner"
+    android:layout_marginStart="20dp"
+    android:layout_marginTop="20dp"
+    android:layout_marginEnd="20dp"
+    android:layout_marginBottom="20dp"
+    android:gravity="center"
+    android:text=""
+    android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/btnCT"
+        android:layout_width="135dp"
+        android:layout_height="65dp"
+        android:layout_below="@id/tien"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="15dp"
+        android:text="Chi tiêu" />
+
+    <RelativeLayout
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="190dp"
+        android:layout_below="@id/btnCT"
+        android:orientation="horizontal">
+
+        <!--        android:text="RadioButton 2"-->
+
+
+        <RadioButton
+            android:id="@+id/radioButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:text="Mua sắm" />
+        <RadioButton
+            android:id="@+id/radioButton4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="70dp"
+            android:text="Điện, nước" />
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="249dp"
+            android:text="Di chuyển" />
+
+        <RadioButton
+            android:id="@+id/radioButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="249dp"
+            android:layout_marginTop="70dp"
+            android:text="Chi tiêu khác" />
+
+    </RelativeLayout>
+    <Button
+        android:layout_width="135dp"
+        android:layout_height="65dp"
+        android:id="@+id/btnchart"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:text="Xem biểu đồ" />
+
+</RelativeLayout>
