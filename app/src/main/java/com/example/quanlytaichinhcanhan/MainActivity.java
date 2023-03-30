@@ -28,6 +28,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.mikephil.charting.charts.Chart;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
@@ -96,7 +97,7 @@ private void actionMenu() {
                     startActivity(intent1);
                     break;
                 case 1:
-                    Intent intent2 = new Intent(MainActivity.this, usingadapter.class);
+                    Intent intent2 = new Intent(MainActivity.this, ChartUsing.class);
                     intent2.putExtra("key2",message);
                     startActivity(intent2);
                     break;

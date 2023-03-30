@@ -53,10 +53,10 @@ public class OnlyChart extends AppCompatActivity {
         pie.setCenterText("Quarterly Revenue");
         pie.animateY(10000);
         //ne
-        records.add(new PieEntry(32,"Quarter1"));
-        records.add(new PieEntry(14,"Quarter2"));
-        records.add(new PieEntry(34,"Quarter3"));
-        records.add(new PieEntry(38,"Quarter4"));
+//        records.add(new PieEntry(32,"Quarter1"));
+//        records.add(new PieEntry(14,"Quarter2"));
+//        records.add(new PieEntry(34,"Quarter3"));
+//        records.add(new PieEntry(38,"Quarter4"));
 
     }
     public void TraTien(String username) {

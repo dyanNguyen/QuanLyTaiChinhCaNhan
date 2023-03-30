@@ -25,7 +25,7 @@ import android.widget.Toast;
 
 public class ChartUsing extends AppCompatActivity {
 
-    PieChart Usingpie;
+    //PieChart Usingpie;
     private static final int MY_CODE = 10;
     public int tienValue, tienIndex = -1;
     public Button Click, chart;
@@ -35,30 +35,30 @@ public class ChartUsing extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chart_using);
+        setContentView(R.layout.activity_using);
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        Usingpie=(PieChart)findViewById(R.id.Usingchart);
+        //Usingpie=(PieChart)findViewById(R.id.Usingchart);
 
 
-        ArrayList<PieEntry> records=new ArrayList<>();
-        records.add(new PieEntry(32,"Quarter1"));
-        records.add(new PieEntry(14,"Quarter2"));
-        records.add(new PieEntry(34,"Quarter3"));
-        records.add(new PieEntry(38,"Quarter4"));
-
-        PieDataSet dataSet=new PieDataSet(records,"Pie Chart Report");
-        dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
-        dataSet.setValueTextColor(Color.BLACK);
-        dataSet.setValueTextSize(22f);
-
-        PieData pieData=new PieData(dataSet);
-
-        Usingpie.setData(pieData);
-        Usingpie.getDescription().setEnabled(true);
-        Usingpie.setCenterText("Quarterly Revenue");
-        Usingpie.animate();
+//        ArrayList<PieEntry> records=new ArrayList<>();
+//        records.add(new PieEntry(32,"Quarter1"));
+//        records.add(new PieEntry(14,"Quarter2"));
+//        records.add(new PieEntry(34,"Quarter3"));
+//        records.add(new PieEntry(38,"Quarter4"));
+//
+//        PieDataSet dataSet=new PieDataSet(records,"Report");
+//        dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+//        dataSet.setValueTextColor(Color.BLACK);
+//        dataSet.setValueTextSize(22f);
+//
+//        PieData pieData=new PieData(dataSet);
+//
+//        Usingpie.setData(pieData);
+//        Usingpie.getDescription().setEnabled(true);
+//        Usingpie.setCenterText("Quarterly Revenue");
+//        Usingpie.animate();
         tien=findViewById(R.id.tien);
         Click=findViewById(R.id.btnCT);
         chart = findViewById(R.id.btnchart);

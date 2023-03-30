@@ -15,7 +15,6 @@
         <activity android:name=".TienTe"/>
         <activity android:name=".ChartSalary"/>
         <activity android:name=".ChartUsing"/>
-        <activity android:name=".usingadapter"/>
         <activity android:name=".OnlyChart"/>
         <activity android:name=".ContactActivity"/>
         <activity android:name=".NoteActivity"/>
