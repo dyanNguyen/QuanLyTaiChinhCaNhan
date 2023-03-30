@@ -25,7 +25,6 @@ android:padding="16dp">
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text"
-        android:textColor="#FFFFFF"
         android:padding="12dp"
         android:layout_marginBottom="16dp"/>
     <TextView
@@ -40,7 +39,6 @@ android:padding="16dp">
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
-        android:textColor="#FFFFFF"
         android:padding="12dp"
         android:layout_marginBottom="16dp"/>
     <TextView
@@ -54,7 +52,6 @@ android:padding="16dp">
         android:id="@+id/repeatPasswordEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#FFFFFF"
         android:inputType="textPassword"
         android:padding="12dp"
         android:layout_marginBottom="16dp"/>

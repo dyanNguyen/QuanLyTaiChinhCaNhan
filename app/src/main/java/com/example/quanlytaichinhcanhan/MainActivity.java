@@ -72,9 +72,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                         Intent intent = new Intent(MainActivity.this, NaptienCucmanh.class);
                         startActivityForResult(intent,MY_REQUEST_CODE);
-                        //startActivity(intent);
-                        //String moneyString = moneyEditText.getText().toString();
-                        // Process the entered money value
                     }
         });
     }
